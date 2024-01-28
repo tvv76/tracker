@@ -8,9 +8,7 @@ public class Library {
         books[2] = new Book("Война и мир", 780);
         books[3] = new Book("Тихий Дон", 684);
         for (int i = 0; i < books.length; i++) {
-            if (books[i] != null) {
-                System.out.println(String.format("В книге: %s %d страниц", books[i].getName(), books[i].getPages()));
-            }
+            System.out.println(String.format("В книге: %s %d страниц", books[i].getName(), books[i].getPages()));
         }
 
         Book mem = books[0];
@@ -19,14 +17,12 @@ public class Library {
 
         System.out.println();
         for (int i = 0; i < books.length; i++) {
-            if (books[i] != null) {
-                System.out.println(String.format("В книге: %s %d страниц", books[i].getName(), books[i].getPages()));
-            }
+            System.out.println(String.format("В книге: %s %d страниц", books[i].getName(), books[i].getPages()));
         }
 
         System.out.println();
         for (int i = 0; i < books.length; i++) {
-            if (books[i] != null && books[i].getName().equals("Clean code")) {
+            if ("Clean code".equals(books[i].getName())) {
                 System.out.println(String.format("Рекомендуемая книга: %s, в ней всего %d страниц",
                         books[i].getName(), books[i].getPages()));
             }
