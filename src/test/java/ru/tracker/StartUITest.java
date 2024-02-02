@@ -1,6 +1,5 @@
 package ru.tracker;
 
-import org.assertj.core.api.AssertionsForClassTypes;
 import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -38,6 +37,6 @@ class StartUITest {
         int id = item.getId();
         String[] answers = {String.valueOf(id)};
         StartUI.deleteItem(new MockInput(answers), tracker);
-        AssertionsForClassTypes.assertThat(tracker.findById(id)).isNull();
+        assertThat(tracker.findById(id)).isNull();
     }
 }
