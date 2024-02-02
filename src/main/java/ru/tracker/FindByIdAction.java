@@ -1,6 +1,6 @@
 package ru.tracker;
 
-public class FindByIdAction implements UserAction{
+public class FindByIdAction implements UserAction {
     @Override
     public String name() {
         return "Показать заявку по id";
