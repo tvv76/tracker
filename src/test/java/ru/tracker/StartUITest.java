@@ -104,7 +104,8 @@ class StartUITest {
     void whenFindAllItemsTestOutputIsSuccessfully() {
         Output output = new StubOutput();
         Tracker tracker = new Tracker();
-        Item item = tracker.add(new Item("test1"));
+        Item item1 = tracker.add(new Item("test1"));
+        Item item2 = tracker.add(new Item("test2"));
         Input input = new MockInput(
                 new String[] {"0", "1"}
         );
@@ -118,7 +119,8 @@ class StartUITest {
                 "Меню:" + ln
                         + "0. Показать все заявки" + ln
                         + "1. Завершить программу" + ln + "=== Вывод всех заявок ===" + ln
-                        + item.toString() + ln
+                        + item1.toString() + ln
+                        + item2.toString() + ln
                         + "Меню:" + ln
                         + "0. Показать все заявки" + ln
                         + "1. Завершить программу" + ln
@@ -130,9 +132,11 @@ class StartUITest {
     void whenFindItemByNameTestOutputIsSuccessfully() {
         Output output = new StubOutput();
         Tracker tracker = new Tracker();
-        Item item = tracker.add(new Item("test1"));
+        Item item1 = tracker.add(new Item("test1"));
+        Item item2 = tracker.add(new Item("test1"));
+        Item item3 = tracker.add(new Item("test2"));
         Input input = new MockInput(
-                new String[] {"0", item.getName(), "1"}
+                new String[] {"0", "test1", "1"}
         );
         UserAction[] actions = new UserAction[]{
                 new FindByNameAction(output),
@@ -145,7 +149,8 @@ class StartUITest {
                         + "0. Показать заявки по имени" + ln
                         + "1. Завершить программу" + ln
                         + "=== Вывод заявок по имени ===" + ln
-                        + item.toString() + ln
+                        + item1.toString() + ln
+                        + item2.toString() + ln
                         + "Меню:" + ln
                         + "0. Показать заявки по имени" + ln
                         + "1. Завершить программу" + ln
@@ -157,9 +162,10 @@ class StartUITest {
     void whenFindItemByIdTestOutputIsSuccessfully() {
         Output output = new StubOutput();
         Tracker tracker = new Tracker();
-        Item item = tracker.add(new Item("test1"));
+        Item item1 = tracker.add(new Item("test1"));
+        Item item2 = tracker.add(new Item("test2"));
         Input input = new MockInput(
-                new String[] {"0", String.valueOf(item.getId()), "1"}
+                new String[] {"0", String.valueOf(item1.getId()), "1"}
         );
         UserAction[] actions = new UserAction[]{
                 new FindByIdAction(output),
@@ -172,7 +178,7 @@ class StartUITest {
                         + "0. Показать заявку по id" + ln
                         + "1. Завершить программу" + ln
                         + "=== Вывод заявки по id ===" + ln
-                        + item.toString() + ln
+                        + item1.toString() + ln
                         + "Меню:" + ln
                         + "0. Показать заявку по id" + ln
                         + "1. Завершить программу" + ln
