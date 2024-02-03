@@ -6,12 +6,12 @@ public class FindEl {
         for (int i = 0; i < value.length; i++) {
             if (key != null && key.equals(value[i])) {
                 result = i;
+                break;
             }
         }
         if (result == -1) {
             throw new ElementNotFoundException("Element " + key + " is not found in array.");
         }
-        /* цикл fori, поскольку нам надо найти индекс искомого элемента в массиве */
         return result;
     }
 
