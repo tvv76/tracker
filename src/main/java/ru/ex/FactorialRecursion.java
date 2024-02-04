@@ -2,12 +2,10 @@ package ru.ex;
 
 public class FactorialRecursion {
     public static int calc(int n) {
-        if (n > 2) {
+        if (n > 1) {
             return calc(n - 1) * n;
-        } else if (n == 0) {
-            return 1;
         }
-        return n;
+        return 1;
     }
 
     public static void main(String[] args) {
