@@ -23,8 +23,11 @@ class ValidateInputTest {
                 new String[] {"1", "2", "3"}
         );
         ValidateInput input = new ValidateInput(output, in);
-        int selected = input.askInt("Enter menu:");
-        assertThat(selected).isEqualTo(1);
+        int[] selected = new int[3];
+        for (int i = 0; i < selected.length; i++) {
+            selected[i] = input.askInt("Enter menu:");
+        }
+        assertThat(selected).isEqualTo(new int[] {1, 2, 3});
     }
 
     @Test
