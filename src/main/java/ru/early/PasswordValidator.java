@@ -1,18 +1,8 @@
 package ru.early;
 
-import java.util.Locale;
-
 public class PasswordValidator {
     private static final String[] FORBIDDEN = {"qwerty", "12345", "password", "admin", "user"};
 
-    /**
-
-     *  7. Пароль не содержит подстрок без учета регистра: qwerty, 12345, password, admin, user.
-     *     Без учета регистра, значит что, например, ни qwerty ни QWERTY ни qwErty и т.п.
-     *     если да, то "Password shouldn't contain substrings: qwerty, 12345, password, admin, user".
-     * @param password Пароль
-     * @return Вернет пароль или выбросит исключение.
-     */
     public static String validate(String password) {
         if (password == null) {
             throw new IllegalArgumentException(
@@ -42,7 +32,9 @@ public class PasswordValidator {
             if (!Character.isLetterOrDigit(symbol)) {
                 hasSpecial = true;
             }
-
+            if (hasUpCase && hasLowCase && hasDigit && hasSpecial) {
+                break;
+            }
         }
         if (!hasUpCase) {
             throw new IllegalArgumentException(
@@ -66,8 +58,9 @@ public class PasswordValidator {
         }
 
         final String[] forbiddenSubStrings = {"qwerty", "12345", "password", "admin", "user"};
+        String lowCasePassword = password.toLowerCase();
         for (String subStr : forbiddenSubStrings) {
-            if (password.toLowerCase(Locale.ROOT).contains(subStr)) {
+            if (lowCasePassword.contains(subStr)) {
                 throw new IllegalArgumentException(
                         "Password shouldn't contain substrings: qwerty, 12345, password, admin, user"
                 );
