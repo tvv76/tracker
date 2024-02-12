@@ -8,10 +8,11 @@ public class ConvertList2Array {
         int groups = (int) Math.ceil((double) list.size() / cells);
         int[][] array = new int[groups][cells];
         int count = 0;
-        while (count < list.size()) {
+        for (Integer num : list) {
             int i = count / cells;
             int j = count % cells;
-            array[i][j] = list.get(count++);
+            array[i][j] = num;
+            count++;
         }
         return array;
     }
