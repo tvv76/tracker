@@ -18,7 +18,7 @@ class StartUITest {
                 new String[] {"0", "Item name", "1"}
         );
         Tracker tracker = new Tracker();
-        ArrayList<UserAction> actions = new ArrayList<>(List.of(
+        List<UserAction> actions = new ArrayList<>(List.of(
                 new Create(output),
                 new Exit(output)
         ));
@@ -35,7 +35,7 @@ class StartUITest {
         Input input = new MockInput(
                 new String[] {"0", String.valueOf(item.getId()), replacedName, "1"}
         );
-        ArrayList<UserAction> actions = new ArrayList<>(List.of(
+        List<UserAction> actions = new ArrayList<>(List.of(
                 new Replace(output),
                 new Exit(output)
         ));
@@ -51,7 +51,7 @@ class StartUITest {
         Input input = new MockInput(
                 new String[] {"0", String.valueOf(item.getId()), "1"}
         );
-        ArrayList<UserAction> actions = new ArrayList<>(List.of(
+        List<UserAction> actions = new ArrayList<>(List.of(
                 new Delete(output),
                 new Exit(output)
         ));
@@ -66,7 +66,7 @@ class StartUITest {
                 new String[] {"0"}
         );
         Tracker tracker = new Tracker();
-        ArrayList<UserAction> actions = new ArrayList<>(List.of(
+        List<UserAction> actions = new ArrayList<>(List.of(
                 new Exit(output)
         ));
         new StartUI(output).init(input, tracker, actions);
@@ -86,7 +86,7 @@ class StartUITest {
         Input input = new MockInput(
                 new String[] {"0", String.valueOf(one.getId()), replaceName, "1"}
         );
-        ArrayList<UserAction> actions = new ArrayList<>(List.of(
+        List<UserAction> actions = new ArrayList<>(List.of(
                 new Replace(output),
                 new Exit(output)
         ));
@@ -114,7 +114,7 @@ class StartUITest {
         Input input = new MockInput(
                 new String[] {"0", "1"}
         );
-        ArrayList<UserAction> actions = new ArrayList<>(List.of(
+        List<UserAction> actions = new ArrayList<>(List.of(
                 new FindAll(output),
                 new Exit(output)
         ));
@@ -143,7 +143,7 @@ class StartUITest {
         Input input = new MockInput(
                 new String[] {"0", "test1", "1"}
         );
-        ArrayList<UserAction> actions = new ArrayList<>(List.of(
+        List<UserAction> actions = new ArrayList<>(List.of(
                 new FindByName(output),
                 new Exit(output)
         ));
@@ -172,7 +172,7 @@ class StartUITest {
         Input input = new MockInput(
                 new String[] {"0", String.valueOf(item1.getId()), "1"}
         );
-        ArrayList<UserAction> actions = new ArrayList<>(List.of(
+        List<UserAction> actions = new ArrayList<>(List.of(
                 new FindById(output),
                 new Exit(output)
         ));
@@ -198,7 +198,7 @@ class StartUITest {
         );
         Output output = new StubOutput();
         Tracker tracker = new Tracker();
-        ArrayList<UserAction> actions = new ArrayList<>(List.of(
+        List<UserAction> actions = new ArrayList<>(List.of(
                 new Exit(output)
         ));
         new StartUI(output).init(input, tracker, actions);

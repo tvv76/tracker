@@ -5,7 +5,7 @@ import ru.tracker.Item;
 import ru.tracker.Output;
 import ru.tracker.Tracker;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class FindAll implements UserAction {
     private final Output output;
@@ -22,7 +22,7 @@ public class FindAll implements UserAction {
     @Override
     public boolean execute(Input input, Tracker tracker) {
         output.println("=== Вывод всех заявок ===");
-        ArrayList<Item> items = tracker.findAll();
+        List<Item> items = tracker.findAll();
         if (items.size() > 0) {
             for (Item item : items) {
                 output.println(item);
