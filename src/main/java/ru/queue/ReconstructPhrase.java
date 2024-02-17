@@ -16,8 +16,10 @@ public class ReconstructPhrase {
     private String getEvenElements() {
         StringBuilder result = new StringBuilder();
         for (int i = 0; i < evenElements.size(); ) {
-            result.append(evenElements.poll());
-            evenElements.poll();
+            char symbol = evenElements.poll();
+            if (evenElements.size() % 2 != 0) {
+                result.append(symbol);
+            }
         }
         return result.toString();
     }
