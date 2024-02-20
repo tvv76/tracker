@@ -22,7 +22,7 @@ class ItemTest {
                 item4
         );
 
-        items.sort(new Item.ItemAscByName());
+        items.sort(new ItemAscByName());
 
         List<Item> expected = Arrays.asList(
                 item2,
@@ -50,7 +50,7 @@ class ItemTest {
                 item4
         );
 
-        items.sort(new Item.ItemDescByName());
+        items.sort(new ItemDescByName());
 
         List<Item> expected = Arrays.asList(
                 item1,
