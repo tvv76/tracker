@@ -1,8 +1,5 @@
 package ru.bank;
 
-import ru.bank.Account;
-import ru.bank.User;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -23,10 +20,9 @@ public class BankService {
     public void addAccount(String passport, Account account) {
         User user = findByPassport(passport);
         List<Account> accounts = users.get(user);
-        if (accounts == null || accounts.contains(account)) {
-            return;
+        if (accounts != null && !accounts.contains(account)) {
+            accounts.add(account);
         }
-        accounts.add(account);
     }
 
     public User findByPassport(String passport) {
@@ -40,12 +36,11 @@ public class BankService {
 
     public Account findByRequisite(String passport, String requisite) {
         User user = findByPassport(passport);
-        if (user == null) {
-            return null;
-        }
-        for (Account account : users.get(user)) {
-            if (account.getRequisite().equals(requisite)) {
-                return account;
+        if (user != null) {
+            for (Account account : users.get(user)) {
+                if (account.getRequisite().equals(requisite)) {
+                    return account;
+                }
             }
         }
         return null;
