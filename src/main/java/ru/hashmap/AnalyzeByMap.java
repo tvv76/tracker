@@ -28,20 +28,31 @@ public class AnalyzeByMap {
         return result;
     }
 
-    public static List<Label> averageScoreBySubject(List<Pupil> pupils) {
-        Map<String, Label> avgBySubjects = new LinkedHashMap();
+    private static Map<String, Double> sumScoresBySubjects(List<Pupil> pupils) {
+        Map<String, Double> result = new LinkedHashMap();
 
         for (Pupil pupil : pupils) {
             for (Subject subject : pupil.subjects()) {
                 Double temp = 0D;
-                if (avgBySubjects.containsKey(subject.name())) {
-                    temp = avgBySubjects.get(subject.name()).score();
+                if (result.containsKey(subject.name())) {
+                    temp = result.get(subject.name());
                 }
-                avgBySubjects.put(subject.name(), new Label(subject.name(),
-                        temp + (double) subject.score() / pupils.size()));
+                result.put(subject.name(), temp + (double) subject.score());
             }
         }
-        return avgBySubjects.values().stream().toList();
+        return result;
+    }
+
+    public static List<Label> averageScoreBySubject(List<Pupil> pupils) {
+        Map<String, Double> avgBySubjects = sumScoresBySubjects(pupils);
+        List<Label> resul = new ArrayList<>();
+
+        List<Label> result = new ArrayList();
+        for (String subject : avgBySubjects.keySet()) {
+            Double score = avgBySubjects.get(subject);
+            result.add(new Label(subject, score / pupils.size()));
+        }
+        return result;
     }
 
     public static Label bestStudent(List<Pupil> pupils) {
@@ -58,21 +69,15 @@ public class AnalyzeByMap {
     }
 
     public static Label bestSubject(List<Pupil> pupils) {
-        Map<String, Label> sumScoresBySubjects = new LinkedHashMap();
+        Map<String, Double> sumScoresBySubjects = sumScoresBySubjects(pupils);
+        List<Label> scoresBySubjects = new ArrayList();
 
-        for (Pupil pupil : pupils) {
-            for (Subject subject : pupil.subjects()) {
-                Double temp = 0D;
-                if (sumScoresBySubjects.containsKey(subject.name())) {
-                    temp = sumScoresBySubjects.get(subject.name()).score();
-                }
-                sumScoresBySubjects.put(subject.name(), new Label(subject.name(),
-                        temp + subject.score()));
-            }
+        for (String subject : sumScoresBySubjects.keySet()) {
+            Double score = sumScoresBySubjects.get(subject);
+            scoresBySubjects.add(new Label(subject, score));
         }
 
-        List<Label> result = new ArrayList(sumScoresBySubjects.values().stream().toList());
-        result.sort(Comparator.naturalOrder());
-        return result.get(result.size() - 1);
+        scoresBySubjects.sort(Comparator.naturalOrder());
+        return scoresBySubjects.get(scoresBySubjects.size() - 1);
     }
 }
