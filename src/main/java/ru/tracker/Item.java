@@ -2,6 +2,7 @@ package ru.tracker;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Comparator;
 
 public class Item {
     private int id;
@@ -50,4 +51,19 @@ public class Item {
                 ", created=" + created.format(FORMATTER) +
                 '}';
     }
+
+    public static class ItemAscByName implements Comparator<Item> {
+        @Override
+        public int compare(Item left, Item right) {
+            return left.getName().compareTo(right.getName());
+        }
+    }
+
+    public static class ItemDescByName implements Comparator<Item> {
+        @Override
+        public int compare(Item left, Item right) {
+            return right.getName().compareTo(left.getName());
+        }
+    }
+
 }
