@@ -7,7 +7,7 @@ public class DepartmentsDescComparator implements Comparator<String> {
     public int compare(String left, String right) {
         String[] leftStructure = (left + "/ ").split("/", 2);
         String[] rightStructure = (right + "/ ").split("/", 2);
-        StringCompare compare = new StringCompare();
-        return compare.compare(rightStructure[0], leftStructure[0]) != 0 ? compare.compare(rightStructure[0], leftStructure[0]) : compare.compare(leftStructure[1], rightStructure[1]);
+        return rightStructure[0].equals(leftStructure[0]) ? leftStructure[1].compareTo(rightStructure[1]) :
+                rightStructure[0].compareTo(leftStructure[0]);
     }
 }
