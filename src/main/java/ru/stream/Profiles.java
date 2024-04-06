@@ -1,5 +1,6 @@
 package ru.stream;
 
+import java.util.Comparator;
 import java.util.List;
 
 public class Profiles {
@@ -10,4 +11,14 @@ public class Profiles {
                 .toList();
         return result;
     }
+
+    public static List<Address> collectSortWithoutDuplicate(List<Profile> profiles) {
+        List<Address> result = collect(profiles).stream()
+                .sorted(Comparator.comparing(Address::getCity))
+                .distinct()
+                .toList();
+
+        return result;
+    }
+
 }
